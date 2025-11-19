@@ -75,7 +75,7 @@
 }
 
 .testemunhos {
-  padding: 40px 60px;
+  padding: 80px;
   background: #ffffff;
   text-align: center;
 }
@@ -143,25 +143,6 @@
   }
 }
 
-.cta {
-  text-align: center;
-  padding: 60px;
-}
-
-.cta h2 {
-  font-size: 42px;
-  margin-bottom: 40px;
-}
-
-.cta a {
-  background: linear-gradient(130deg, #a67c2e, #d7b566);
-  padding: 8px 25px;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 10px;
-  font-size: 18px;
-}
-
 @media (max-width: 900px) {
   .hero {
     flex-direction: column;
@@ -169,10 +150,28 @@
     padding: 20px;
   }
   .hero img {
-    width: 80%;
+    width: 90%;
     margin-top: 30px;
   }
+
+  .hero-text h1 {
+    font-size: 45px;
+    line-height: 1.1;
+  }
+
+  .features h2 {
+    font-size: 30px;
+  }
+
+  .testemunhos h2{
+    font-size: 30px;
+  }
+
   .cards {
     grid-template-columns: 1fr;
+  }
+
+  .testemunhos{
+    padding: 40px;
   }
 }
