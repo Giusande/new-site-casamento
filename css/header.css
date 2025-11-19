@@ -1,56 +1,62 @@
-header{
-    width: 100%;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    background: #160D48;
+header {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: #160d48;
 }
 
-header .logo{
-    height: 100%;
+header .logo {
+  height: 100%;
 }
 
-header .navbar .nav-list{
-    display: flex;
-    gap: 20px;
+header .navbar .nav-list {
+  display: flex;
+  gap: 20px;
 }
 
-header .navbar .nav-list li{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+header .navbar .nav-list li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-header .navbar .nav-list li:hover a{
-    color: #D7B566;
+header .navbar .nav-list li:hover a {
+  color: #d7b566;
 }
 
-header .navbar .nav-list li a{
-    color: #F4F4F4;
-    transition: .2s;
-    font-size: 14px;
+header .navbar .nav-list li a {
+  color: #f4f4f4;
+  transition: 0.2s;
+  font-size: 14px;
 }
 
-header .login{
-    display: flex;
-    gap: 10px;
+header .login {
+  display: flex;
+  gap: 10px;
 }
 
-header .login button{
-    padding: 5px 15px;
-    border-radius: 15px;
-    border: none;
-    color: #F4F4F4;
-    font-size: 14px;
-    cursor: pointer;
+header .login button {
+  padding: 5px 15px;
+  border-radius: 15px;
+  border: none;
+  color: #f4f4f4;
+  font-size: 14px;
+  cursor: pointer;
 }
 
-header .login .cadastro{
-    background: linear-gradient(130deg, #D7B566, #A67C2E);
+header .login .cadastro {
+  background: linear-gradient(130deg, #d7b566, #a67c2e);
 }
 
-header .login .logar{
-    background: transparent;
-    border: 2px solid #F4F4F4;
+header .login .logar {
+  background: transparent;
+  border: 2px solid #f4f4f4;
+}
+
+@media (max-width: 900px) {
+  header .navbar {
+    display: none;
+  }
 }
