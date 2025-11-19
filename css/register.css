@@ -1,0 +1,107 @@
+.container {
+      width: 900px;
+      max-width: 90%;
+      background: #fff;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      border-radius: 18px;
+      display: flex;
+      overflow: hidden;
+      margin: 50px auto;
+    }
+
+    .left {
+      flex: 1;
+      padding: 60px;
+      color: #160D48;
+    }
+
+    .left h2 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .left p {
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    .input {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 15px;
+      background: #160D48;
+      color: #fff;
+      border: none;
+      font-size: 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .google-btn {
+      width: 100%;
+      padding: 14px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      background: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 15px;
+      font-size: 16px;
+      transition: .3s;
+    }
+
+    .google-btn img {
+      width: 22px;
+    }
+
+    .google-btn:hover {
+      border-color: #d4a373;
+    }
+
+    .right {
+      flex: 1;
+      background: url("../../assets/gerais/landing_page2.webp") center/cover no-repeat;
+    }
+
+    .link {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .link a {
+      color: #d4a373;
+      text-decoration: none;
+    }
+
+    .return{
+      text-align: center;
+      padding: 10px 30px;
+      border: 1px solid #160D48;
+      border-radius: 20px;
+      color: #160D48;
+      background: transparent;
+      width: 100%;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    @media (max-width: 800px) {
+      .container {
+        flex-direction: column-reverse;
+      }
+      .right {
+        height: 200px;
+      }
+    }

@@ -1,0 +1,178 @@
+.hero {
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 80px;
+  margin-top: 20px;
+  gap: 30px;
+}
+
+.hero-text h1 {
+  font-size: 55px;
+  line-height: 1.1;
+}
+
+.hero-text p {
+  margin: 20px 0;
+  font-size: 18px;
+  color: var(--gray);
+}
+
+.hero-text .btn {
+  background: linear-gradient(130deg, #d7b566, #a67c2e);
+  padding: 15px 30px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  border-radius: 10px;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.hero img {
+  width: 45%;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.features {
+  padding: 80px 60px;
+  text-align: center;
+}
+
+.features h2 {
+  font-size: 40px;
+  margin-bottom: 40px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px #000;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+
+.card h3 {
+  margin-bottom: 12px;
+  color: #160d48;
+}
+
+.card p {
+  color: #160d48;
+  font-size: 14px;
+}
+
+.testemunhos {
+  padding: 40px 60px;
+  background: #ffffff;
+  text-align: center;
+}
+
+.testemunhos h2 {
+  font-size: 40px;
+  margin-bottom: 50px;
+  color: #160d48;
+}
+
+.testemunhos-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.testemunho-card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  transition: 0.3s;
+}
+
+.testemunho-card:hover {
+  transform: translateY(-8px);
+}
+
+.testemunho-topo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.testemunho-topo img {
+  width: 65px;
+  height: 65px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.testemunho-nome {
+  font-size: 20px;
+  font-weight: 600;
+  color: #160d48;
+}
+
+.estrelas {
+  color: #ffbd59;
+  margin: 8px 0;
+  font-size: 20px;
+}
+
+.testemunho-texto {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #160d48;
+}
+
+@media (max-width: 900px) {
+  .testemunhos-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cta {
+  text-align: center;
+  padding: 60px;
+}
+
+.cta h2 {
+  font-size: 42px;
+  margin-bottom: 40px;
+}
+
+.cta a {
+  background: linear-gradient(130deg, #a67c2e, #d7b566);
+  padding: 8px 25px;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 10px;
+  font-size: 18px;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+  .hero img {
+    width: 80%;
+    margin-top: 30px;
+  }
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
