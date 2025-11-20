@@ -8,11 +8,18 @@ header {
   position: relative;
 }
 
+header .logo-mobile{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
 header .logo {
   height: 100%;
 }
 
-/* NAV DESKTOP */
 header .navbar .nav-list {
   display: flex;
   gap: 20px;
@@ -34,7 +41,6 @@ header .navbar .nav-list li a {
   font-size: 14px;
 }
 
-/* BOTÕES LOGIN */
 header .login {
   display: flex;
   gap: 10px;
@@ -58,11 +64,10 @@ header .login .logar {
   border: 2px solid #f4f4f4;
 }
 
-/* BOTÃO HAMBURGUER MODERNO */
 .menu-btn {
   display: none;
-  width: 35px;
-  height: 28px;
+  width: 30px;
+  height: 25px;
   flex-direction: column;
   justify-content: space-between;
   background: none;
@@ -73,13 +78,12 @@ header .login .logar {
 
 .menu-btn span {
   width: 100%;
-  height: 4px;
+  height: 2px;
   background: #fff;
   border-radius: 5px;
   transition: 0.4s cubic-bezier(.25,1,.5,1);
 }
 
-/* ANIMAÇÃO DO X */
 .menu-btn.active span:nth-child(1) {
   transform: translateY(12px) rotate(45deg);
   background: #fff;
@@ -94,13 +98,6 @@ header .login .logar {
   background: #fff;
 }
 
-.menu-btn.menu-btn.active{
-  position: fixed;
-  left: 40px;
-}
-
-
-/* OVERLAY */
 #overlay {
   position: fixed;
   top: 0;
@@ -115,17 +112,16 @@ header .login .logar {
   z-index: 5;
 }
 
-/* ---------------------- */
-/* MOBILE MENU GLASS       */
-/* ---------------------- */
-
 @media (max-width: 900px) {
-
   .menu-btn {
     display: flex;
   }
 
-  /* MENU LATERAL GLASSMORPHISM */
+  header{
+    justify-content: space-between;
+    padding: 0 50px;
+  }
+
   header .navbar {
     position: fixed;
     left: -100%;
@@ -165,14 +161,8 @@ header .login .logar {
     padding: 7px 15px;
   }
 
-  /* overlay ativo */
   #overlay.active {
     opacity: 1;
     pointer-events: auto;
-  }
-
-  /* ocultar login no mobile */
-  header .login {
-    display: none;
   }
 }
