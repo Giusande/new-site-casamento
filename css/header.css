@@ -8,7 +8,7 @@ header {
   position: relative;
 }
 
-header .logo-mobile{
+header .logo-mobile {
   height: 100%;
   display: flex;
   align-items: center;
@@ -18,6 +18,10 @@ header .logo-mobile{
 
 header .logo {
   height: 100%;
+}
+
+header .navbar .logo {
+  display: none;
 }
 
 header .navbar .nav-list {
@@ -81,7 +85,7 @@ header .login .logar {
   height: 2px;
   background: #fff;
   border-radius: 5px;
-  transition: 0.4s cubic-bezier(.25,1,.5,1);
+  transition: 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .menu-btn.active span:nth-child(1) {
@@ -108,7 +112,7 @@ header .login .logar {
   background: rgba(0, 0, 0, 0.4);
   opacity: 0;
   pointer-events: none;
-  transition: 0.35s cubic-bezier(.25,1,.5,1);
+  transition: 0.35s cubic-bezier(0.25, 1, 0.5, 1);
   z-index: 5;
 }
 
@@ -117,28 +121,42 @@ header .login .logar {
     display: flex;
   }
 
-  header{
+  header {
     justify-content: space-between;
     padding: 0 50px;
   }
 
   header .navbar {
     position: fixed;
-    left: -100%;
-    top: 0;
-    width: 100%;
+    left: 5%;
+    top: -100%;
+    width: 90%;
     max-width: 500px;
-    height: 100vh;
+    height: auto;
     background: #160d48;
-    padding: 80px 15px;
-    transition: 0.45s cubic-bezier(.25,1,.5,1);
+    padding: 30px 15px;
+    border-radius: 20px;
+    transition: 0.45s cubic-bezier(0.25, 1, 0.5, 1);
     z-index: 10;
     display: flex;
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  header .navbar .logo {
+    display: block;
+    height: 100px;
+  }
+
+  header .navbar .nav-list p{
+    text-align: center;
   }
 
   header .navbar.active {
-    left: 0;
+    left: 5%;
+    top: 50%;
+    transform: translatey(-50%);
   }
 
   header .navbar .nav-list {
@@ -146,8 +164,8 @@ header .login .logar {
     gap: 20px;
     width: 100%;
   }
-  
-  header .navbar .nav-list li{
+
+  header .navbar .nav-list li {
     text-align: start;
   }
 
