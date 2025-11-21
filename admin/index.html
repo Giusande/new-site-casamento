@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Painel Admin</title>
+    <link rel="stylesheet" href="../css/config.css" />
+    <link rel="stylesheet" href="../css/admin.css" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  </head>
+  <body>
+    <!-- NAVBAR + SIDEBAR --> 
+    <header class="admin-header">
+      <div class="admin-nav-container">
+        <button id="admin-menu-btn" class="admin-hamburger">
+          <i data-lucide="menu"></i>
+        </button>
+
+        <div class="admin-left">
+          <img
+            src="../assets/logo/sagrada_familia-removebg-preview.png"
+            class="admin-logo"
+          />
+          <h2>Painel Admin</h2>
+        </div>
+
+        <nav class="admin-navbar">
+          <ul>
+            <li><a href="../agenda/">Agenda</a></li>
+            <li><a href="./">Reservas</a></li>
+            <li><a href="#">Configurações</a></li>
+            <li>
+              <button class="logout-btn" onclick="logoutAdmin()">Sair</button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- SIDEBAR MOBILE -->
+    <aside id="admin-sidebar" class="admin-sidebar">
+      <div class="sidebar-header">
+        <h3>Menu</h3>
+        <button id="close-sidebar"><i data-lucide="x"></i></button>
+      </div>
+
+      <ul class="sidebar-links">
+        <li>
+          <a href="../agenda/"><i data-lucide="calendar"></i> Agenda</a>
+        </li>
+        <li>
+          <a href="./"><i data-lucide="clipboard-list"></i> Reservas</a>
+        </li>
+        <li>
+          <a href="#"><i data-lucide="settings"></i> Configurações</a>
+        </li>
+        <li>
+          <a href="#" onclick="logoutAdmin()"
+            ><i data-lucide="log-out"></i> Sair</a
+          >
+        </li>
+      </ul>
+    </aside>
+    <div id="sidebar-overlay"></div>
+
+    <!-- CONTEÚDO -->
+    <main>
+      <h3>Datas ocupadas</h3>
+
+      <div id="admin-list"></div>
+
+      <h3>Adicionar data manual</h3>
+      <input type="date" id="manual-date" />
+      <button id="add-manual">Adicionar</button>
+
+      <h3>Valor padrão da reserva</h3>
+      <input type="number" id="admin-value" />
+      <button id="save-admin">Salvar</button>
+
+      <hr />
+
+      <button id="clear-booked">Limpar todas as reservas</button>
+    </main>
+
+    <script src="./admin.js"></script>
+  </body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Admin</title>
+
+    <style>
+      body {
+        background: #1a3d63;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Poppins, sans-serif;
+      }
+
+      .login-box {
+        background: #fff;
+        padding: 40px;
+        width: 340px;
+        border-radius: 14px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        text-align: center;
+      }
+
+      .login-box h2 {
+        margin-bottom: 20px;
+        color: #1a3d63;
+      }
+
+      input {
+        width: 90%;
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        margin-bottom: 12px;
+      }
+
+      button {
+        width: 90%;
+        padding: 12px;
+        background: #a67c2e;
+        border: none;
+        color: #fff;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      #error {
+        color: red;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="login-box">
+      <h2>Área Administrativa</h2>
+
+      <input type="text" id="user" placeholder="Usuário" />
+      <input type="password" id="pass" placeholder="Senha" />
+
+      <button onclick="login()">Entrar</button>
+
+      <p id="error"></p>
+    </div>
+
+    <script>
+      function login() {
+        const u = document.getElementById("user").value;
+        const p = document.getElementById("pass").value;
+
+        if (u === "admin" && p === "12345") {
+          localStorage.setItem("admin_auth", "true");
+          window.location.href = "../admin/";
+        } else {
+          document.getElementById("error").innerText =
+            "Usuário ou senha incorretos.";
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -29,6 +29,10 @@ header .navbar .nav-list {
   gap: 20px;
 }
 
+header .navbar .nav-list p{
+  display: none;
+}
+
 header .navbar .nav-list li {
   display: flex;
   align-items: center;

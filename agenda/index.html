@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sagrada Familia Recepções & Eventos</title>
+    <link rel="stylesheet" href="../css/config.css" />
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css/agenda.css" />
+    <link rel="stylesheet" href="../css/footer.css" />
+    <link
+      rel="shortcut icon"
+      href="../assets/logo/sagrada_familia.jpg"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="logo-mobile">
+        <button class="menu-btn" id="menu-btn">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <img
+          class="logo"
+          src="../assets/logo/sagrada_familia-removebg-preview.png"
+          alt="Sagrada Familia"
+        />
+      </div>
+      <nav class="navbar" id="navbar">
+        <img
+          class="logo"
+          src="../assets/logo/sagrada_familia-removebg-preview.png"
+          alt="Sagrada Familia"
+        />
+        <ul class="nav-list">
+          <p>Navegue entre as abas:</p>
+          <li><a href="../">Inicio</a></li>
+          <li><a href="./">Agenda</a></li>
+          <li><a href="#">Sagrada Famlia</a></li>
+          <li><a href="#">Preços e Serviços</a></li>
+        </ul>
+      </nav>
+      <div class="login">
+        <button
+          class="logar"
+          onclick="window.location.href = '../register/login/'"
+        >
+          Entrar
+        </button>
+        <button
+          class="cadastro"
+          onclick="window.location.href = '../register/cadastro/'"
+        >
+          Cadastrar
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <div class="top-info">
+        <div class="title">Agenda da Casa de Eventos</div>
+      </div>
+
+      <div class="calendars" id="calendars"></div>
+
+      <div style="margin-top: 12px" class="legend">
+        <span><span class="dot avail"></span> Disponível</span>
+        <span><span class="dot book"></span> Ocupado</span>
+        <span><span class="dot sel"></span> Selecionado</span>
+      </div>
+
+      <div class="modal-bg" id="modal">
+        <div class="modal" role="dialog" aria-modal="true">
+          <div class="modal-head">
+            <div>
+              <strong id="modal-title">Confirmar reserva</strong>
+              <div class="smallmuted" id="modal-sub">
+                Verifique os dados e escolha o pagamento
+              </div>
+            </div>
+            <div>
+              <button class="close-x" id="close-modal">&times;</button>
+            </div>
+          </div>
+
+          <div class="modal-body">
+            <div class="modal-left">
+              <div style="margin-bottom: 10px">
+                <div class="smallmuted">Data selecionada</div>
+                <div
+                  style="color: #000; font-weight: 700; font-size: 18px"
+                  id="selected-date"
+                >
+                  --/--/----
+                </div>
+              </div>
+
+              <div class="form-row">
+                <label class="smallmuted">Nome do responsável</label>
+                <input
+                  type="text"
+                  id="reserve-name"
+                  placeholder="Ex: Ana e Pedro"
+                />
+              </div>
+
+              <div class="form-row">
+                <label class="smallmuted">Email</label>
+                <input
+                  type="email"
+                  id="reserve-email"
+                  placeholder="email@dominio.com"
+                />
+              </div>
+
+              <div class="form-row">
+                <label class="smallmuted">Telefone</label>
+                <input
+                  type="tel"
+                  id="reserve-phone"
+                  placeholder="(XX) XXXXX-XXXX"
+                />
+              </div>
+
+              <div class="form-row">
+                <label class="smallmuted">Observações</label>
+                <input
+                  type="text"
+                  id="reserve-note"
+                  placeholder="Mais info (opcional)"
+                />
+              </div>
+
+              <div style="margin-top: 10px">
+                <div class="smallmuted">Valor estimado</div>
+                <div
+                  style="font-weight: 700; font-size: 18px"
+                  id="reserve-value"
+                >
+                  R$ 6.500,00
+                </div>
+                <div class="smallmuted" style="margin-top: 6px">
+                  Exemplo: valor padrão usado para simulação. Você pode ajustar
+                  no admin.
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-right">
+              <div style="font-weight: 700; margin-bottom: 8px">
+                Método de pagamento
+              </div>
+
+              <div class="payment-methods">
+                <label class="p-option"
+                  ><input type="radio" name="pay" value="pix" checked /> PIX —
+                  Pagamento instantâneo</label
+                >
+                <label class="p-option"
+                  ><input type="radio" name="pay" value="card" /> Cartão de
+                  Crédito — Pagamento parcelado</label
+                >
+                <label class="p-option"
+                  ><input type="radio" name="pay" value="boleto" /> Boleto
+                  Bancário — 3 dias úteis</label
+                >
+              </div>
+
+              <div class="pay-actions" id="pay-actions">
+                <button class="btn" id="confirm-pay">
+                  Confirmar pagamento
+                </button>
+                <button class="ghost" id="cancel-pay">Cancelar</button>
+              </div>
+
+              <div id="payment-result" style="margin-top: 12px"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="admin-panel" id="admin" style="display: none">
+        <div class="admin-head">
+          <div style="font-weight: 700">Painel Admin</div>
+          <div style="display: flex; gap: 8px; align-items: center">
+            <button class="ghost" id="close-admin">Fechar</button>
+          </div>
+        </div>
+
+        <div style="margin-top: 10px; font-size: 13px; color: var(--muted)">
+          <div>
+            Valor padrão (simulação):
+            <strong id="admin-default-value">6500</strong>
+          </div>
+        </div>
+
+        <div style="margin-top: 10px">
+          <label class="smallmuted">Ajustar valor padrão (R$)</label>
+          <input
+            type="number"
+            id="admin-value"
+            min="0"
+            style="
+              width: 100%;
+              padding: 8px;
+              border-radius: 8px;
+              border: 1px solid #eee;
+            "
+          />
+          <div style="display: flex; gap: 8px; margin-top: 8px">
+            <button class="btn" id="save-admin">Salvar</button>
+            <button class="ghost" id="clear-booked">
+              Limpar reservas (teste)
+            </button>
+          </div>
+        </div>
+
+        <div style="margin-top: 12px; font-weight: 700">Datas ocupadas</div>
+        <div class="admin-list" id="admin-list"></div>
+
+        <div style="margin-top: 8px">
+          <div class="smallmuted">
+            Clique em "Adicionar data" para inserir manualmente (YYYY-MM-DD)
+          </div>
+          <div style="display: flex; gap: 8px; margin-top: 8px">
+            <input
+              type="text"
+              id="manual-date"
+              placeholder="2025-12-24"
+              style="
+                flex: 1;
+                padding: 8px;
+                border-radius: 8px;
+                border: 1px solid #eee;
+              "
+            />
+            <button class="btn" id="add-manual">Adicionar data</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="../js/agenda.js"></script>
+  </body>
+</html>

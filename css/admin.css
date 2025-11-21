@@ -1,0 +1,249 @@
+/* ----------------------------
+   HEADER / NAVBAR
+----------------------------- */
+.admin-header {
+  width: 100%;
+  background: #1a3d63;
+  padding: 14px 0;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 500;
+}
+
+.admin-nav-container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #fff;
+}
+
+.admin-logo {
+  width: 48px;
+}
+
+/* MENU DESKTOP */
+.admin-navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 26px;
+  align-items: center;
+}
+
+.admin-navbar a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* BOTÃO LOGOUT */
+.logout-btn {
+  background: #a67c2e;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* BOTÃO HAMBÚRGUER MOBILE */
+.admin-hamburger {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 32px;
+  display: none;
+  cursor: pointer;
+}
+
+/* ----------------------------
+   RESPONSIVIDADE DO MENU
+----------------------------- */
+@media (max-width: 800px) {
+  .admin-navbar ul {
+    display: none;
+  }
+
+  .admin-hamburger {
+    display: block;
+  }
+}
+
+/* ----------------------------
+   SIDEBAR
+----------------------------- */
+.admin-sidebar {
+  position: fixed;
+  left: -260px;
+  top: 0;
+  width: 260px;
+  height: 100%;
+  background: #1a3d63;
+  color: #fff;
+  padding: 20px;
+  transition: 0.3s ease;
+  z-index: 300;
+  box-shadow: 6px 0 14px rgba(0, 0, 0, 0.2);
+}
+
+.admin-sidebar.open {
+  left: 0;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebar-links {
+  margin-top: 20px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.sidebar-links a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #fff;
+  font-size: 17px;
+  text-decoration: none;
+  padding: 8px 4px;
+  transition: 0.2s;
+}
+
+.sidebar-links a:hover {
+  opacity: 0.7;
+}
+
+/* OVERLAY */
+.sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.2s ease;
+  z-index: 200;
+}
+
+.sidebar-overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ----------------------------
+   MAIN CONTENT
+----------------------------- */
+main {
+  max-width: 950px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.1);
+}
+
+main h3 {
+  font-size: 18px;
+  margin-bottom: 12px;
+  color: #1a3d63;
+}
+
+main input {
+  padding: 10px;
+  width: 220px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+main button {
+  padding: 9px 14px;
+  background: #1a3d63;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+main button:hover {
+  opacity: 0.8;
+}
+
+/* BTN GHOST */
+button.ghost {
+  background: transparent;
+  color: #b80000;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* ----------------------------
+   LISTA DE DATAS OCUPADAS
+----------------------------- */
+#admin-list {
+  margin-top: 16px;
+  margin-bottom: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.admin-day {
+  background: #f8f9fc;
+  border: 1px solid #dbe3ee;
+  padding: 12px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-day span {
+  font-size: 15px;
+  color: #333;
+}
+
+.admin-day button {
+  background: #d9534f;
+  padding: 7px 12px;
+  border-radius: 6px;
+}
+
+.admin-day button:hover {
+  background: #c94440;
+}
+
+/* ----------------------------
+   RESPONSIVO GERAL
+----------------------------- */
+@media (max-width: 650px) {
+  main {
+    margin: 20px;
+    padding: 18px;
+  }
+
+  .admin-header h2 {
+    font-size: 18px;
+  }
+
+  .admin-sidebar {
+    width: 220px;
+  }
+}
