@@ -1,0 +1,33 @@
+{
+  "planos": [
+    {
+      "name": "Plano Essencial – \"Celebração Básica\"",
+      "price": 1490,
+      "desc": "Ideal para pequenas comemorações. Inclui uso do salão por 4 horas, mesas e cadeiras básicas, iluminação ambiente, recepção simples e suporte de um coordenador durante o evento. Perfeito para aniversários intimistas, batizados e mini eventos."
+    },
+    {
+      "name": "Plano Intermediário – \"Festa Premium\"",
+      "price": 3290,
+      "desc": "Um pacote completo para quem busca uma experiência mais elaborada. Inclui decoração padrão do salão, sistema de som profissional, iluminação cênica, cozinha equipada para buffet, área externa liberada e até 6 horas de evento. Ideal para 15 anos, bodas e eventos sociais."
+    },
+    {
+      "name": "Plano Avançado – \"Experiência Luxo\"",
+      "price": 6990,
+      "desc": "O pacote mais completo da casa. Inclui decoração personalizada, DJ ou banda (opcional), iluminação inteligente, climatização total do ambiente, equipe completa de apoio, suíte dos noivos, espaço VIP, serviço de recepção e até 8 horas de evento. Perfeito para casamentos e grandes celebrações."
+    }
+  ],
+  "reservas": [
+    {
+      "date": "2025-11-22",
+      "name": "Giulianno Sande Monteiro",
+      "email": "giulianno0013@gmail.com",
+      "plan": "Plano Essencial – \"Celebração Básica\"",
+      "payment": "Boleto",
+      "status": "Aguardando pagamento (boleto)",
+      "createdAt": "2025-11-21T22:04:43.943Z"
+    }
+  ],
+  "indisponiveis": [
+    "2025-11-22"
+  ]
+}

@@ -63,191 +63,127 @@
         </button>
       </div>
     </header>
-
+    <div id="overlay"></div>
     <main>
-      <div class="top-info">
-        <div class="title">Agenda da Casa de Eventos</div>
-      </div>
+      <section class="cards-wrap" role="list">
+        <article
+          class="plan-card"
+          role="listitem"
+          aria-labelledby="plan-essencial"
+        >
+          <div class="decor-top-right" aria-hidden="true"></div>
+          <div class="decor-bottom-left" aria-hidden="true"></div>
 
-      <div class="calendars" id="calendars"></div>
-
-      <div style="margin-top: 12px" class="legend">
-        <span><span class="dot avail"></span> Disponível</span>
-        <span><span class="dot book"></span> Ocupado</span>
-        <span><span class="dot sel"></span> Selecionado</span>
-      </div>
-
-      <div class="modal-bg" id="modal">
-        <div class="modal" role="dialog" aria-modal="true">
-          <div class="modal-head">
+          <div class="plan-top">
             <div>
-              <strong id="modal-title">Confirmar reserva</strong>
-              <div class="smallmuted" id="modal-sub">
-                Verifique os dados e escolha o pagamento
+              <span class="badge">Essencial</span>
+              <h3 id="plan-essencial" class="plan-title">Celebração Básica</h3>
+              <div class="plan-sub">
+                Perfeito para pequenas reuniões íntimas
               </div>
             </div>
+            <div class="price">R$ 1.490<small>/ pacote</small></div>
+          </div>
+
+          <div class="features">
+            <div class="feature">Uso do salão por 4 horas</div>
+            <div class="feature">Mesas e cadeiras básicas</div>
+            <div class="feature">Iluminação ambiente</div>
+            <div class="feature">Coordenador por até 1h</div>
+          </div>
+        </article>
+        <article
+          class="plan-card popular"
+          role="listitem"
+          aria-labelledby="plan-premium"
+        >
+          <div class="decor-top-right" aria-hidden="true"></div>
+          <div class="decor-bottom-left" aria-hidden="true"></div>
+
+          <div class="plan-top">
             <div>
-              <button class="close-x" id="close-modal">&times;</button>
-            </div>
-          </div>
-
-          <div class="modal-body">
-            <div class="modal-left">
-              <div style="margin-bottom: 10px">
-                <div class="smallmuted">Data selecionada</div>
-                <div
-                  style="color: #000; font-weight: 700; font-size: 18px"
-                  id="selected-date"
-                >
-                  --/--/----
-                </div>
-              </div>
-
-              <div class="form-row">
-                <label class="smallmuted">Nome do responsável</label>
-                <input
-                  type="text"
-                  id="reserve-name"
-                  placeholder="Ex: Ana e Pedro"
-                />
-              </div>
-
-              <div class="form-row">
-                <label class="smallmuted">Email</label>
-                <input
-                  type="email"
-                  id="reserve-email"
-                  placeholder="email@dominio.com"
-                />
-              </div>
-
-              <div class="form-row">
-                <label class="smallmuted">Telefone</label>
-                <input
-                  type="tel"
-                  id="reserve-phone"
-                  placeholder="(XX) XXXXX-XXXX"
-                />
-              </div>
-
-              <div class="form-row">
-                <label class="smallmuted">Observações</label>
-                <input
-                  type="text"
-                  id="reserve-note"
-                  placeholder="Mais info (opcional)"
-                />
-              </div>
-
-              <div style="margin-top: 10px">
-                <div class="smallmuted">Valor estimado</div>
-                <div
-                  style="font-weight: 700; font-size: 18px"
-                  id="reserve-value"
-                >
-                  R$ 6.500,00
-                </div>
-                <div class="smallmuted" style="margin-top: 6px">
-                  Exemplo: valor padrão usado para simulação. Você pode ajustar
-                  no admin.
-                </div>
+              <span class="badge">Mais pedido</span>
+              <h3 id="plan-premium" class="plan-title">Festa Premium</h3>
+              <div class="plan-sub">
+                Para quem quer algo mais completo e elegante
               </div>
             </div>
+            <div class="price">R$ 3.290<small>/ pacote</small></div>
+          </div>
 
-            <div class="modal-right">
-              <div style="font-weight: 700; margin-bottom: 8px">
-                Método de pagamento
+          <div class="features">
+            <div class="feature">Decoração padrão do salão</div>
+            <div class="feature">Sistema de som profissional</div>
+            <div class="feature">Iluminação cênica</div>
+            <div class="feature">Cozinha equipada para buffet</div>
+          </div>
+        </article>
+        <article class="plan-card" role="listitem" aria-labelledby="plan-luxo">
+          <div class="decor-top-right" aria-hidden="true"></div>
+          <div class="decor-bottom-left" aria-hidden="true"></div>
+
+          <div class="plan-top">
+            <div>
+              <span class="badge">Luxo</span>
+              <h3 id="plan-luxo" class="plan-title">Experiência Luxo</h3>
+              <div class="plan-sub">
+                O pacote completo para grandes celebrações
               </div>
-
-              <div class="payment-methods">
-                <label class="p-option"
-                  ><input type="radio" name="pay" value="pix" checked /> PIX —
-                  Pagamento instantâneo</label
-                >
-                <label class="p-option"
-                  ><input type="radio" name="pay" value="card" /> Cartão de
-                  Crédito — Pagamento parcelado</label
-                >
-                <label class="p-option"
-                  ><input type="radio" name="pay" value="boleto" /> Boleto
-                  Bancário — 3 dias úteis</label
-                >
-              </div>
-
-              <div class="pay-actions" id="pay-actions">
-                <button class="btn" id="confirm-pay">
-                  Confirmar pagamento
-                </button>
-                <button class="ghost" id="cancel-pay">Cancelar</button>
-              </div>
-
-              <div id="payment-result" style="margin-top: 12px"></div>
             </div>
+            <div class="price">R$ 6.990<small>/ pacote</small></div>
           </div>
-        </div>
-      </div>
 
-      <div class="admin-panel" id="admin" style="display: none">
-        <div class="admin-head">
-          <div style="font-weight: 700">Painel Admin</div>
-          <div style="display: flex; gap: 8px; align-items: center">
-            <button class="ghost" id="close-admin">Fechar</button>
+          <div class="features">
+            <div class="feature">Decoração personalizada</div>
+            <div class="feature">DJ ou banda (opcional)</div>
+            <div class="feature">Climatização total</div>
+            <div class="feature">Suíte dos noivos e espaço VIP</div>
           </div>
-        </div>
+        </article>
+      </section>
+      <section class="client-wrap">
+        <div class="client-body">
+          <div id="calContainer" class="cal-box"></div>
 
-        <div style="margin-top: 10px; font-size: 13px; color: var(--muted)">
-          <div>
-            Valor padrão (simulação):
-            <strong id="admin-default-value">6500</strong>
-          </div>
-        </div>
+          <form id="resForm" class="res-form">
+            <label>Data escolhida</label>
+            <input id="resDate" name="date" readonly required />
 
-        <div style="margin-top: 10px">
-          <label class="smallmuted">Ajustar valor padrão (R$)</label>
-          <input
-            type="number"
-            id="admin-value"
-            min="0"
-            style="
-              width: 100%;
-              padding: 8px;
-              border-radius: 8px;
-              border: 1px solid #eee;
-            "
-          />
-          <div style="display: flex; gap: 8px; margin-top: 8px">
-            <button class="btn" id="save-admin">Salvar</button>
-            <button class="ghost" id="clear-booked">
-              Limpar reservas (teste)
-            </button>
-          </div>
-        </div>
+            <label>Nome</label>
+            <input id="resName" name="name" required />
 
-        <div style="margin-top: 12px; font-weight: 700">Datas ocupadas</div>
-        <div class="admin-list" id="admin-list"></div>
+            <label>Email</label>
+            <input id="resEmail" name="email" required />
 
-        <div style="margin-top: 8px">
-          <div class="smallmuted">
-            Clique em "Adicionar data" para inserir manualmente (YYYY-MM-DD)
-          </div>
-          <div style="display: flex; gap: 8px; margin-top: 8px">
-            <input
-              type="text"
-              id="manual-date"
-              placeholder="2025-12-24"
-              style="
-                flex: 1;
-                padding: 8px;
-                border-radius: 8px;
-                border: 1px solid #eee;
-              "
-            />
-            <button class="btn" id="add-manual">Adicionar data</button>
-          </div>
+            <label>Plano</label>
+            <select id="resPlan" name="plan" required>
+              <option value="">Selecione um plano</option>
+            </select>
+
+            <label>Forma de pagamento</label>
+            <select id="resPayment" name="payment" required>
+              <option value="">Selecione</option>
+              <option>Pix</option>
+              <option>Boleto</option>
+              <option>Cartão</option>
+            </select>
+
+            <div class="form-actions">
+              <button type="submit" class="btn primary">
+                Confirmar reserva
+              </button>
+              <button type="button" id="btnClearForm" class="btn ghost">
+                Resetar
+              </button>
+            </div>
+
+            <p id="payInfo" class="muted"></p>
+          </form>
         </div>
-      </div>
+      </section>
     </main>
-
+    <script src="../js/calendar.js"></script>
     <script src="../js/agenda.js"></script>
+    <script src="../js/mobile.js"></script>
   </body>
 </html>

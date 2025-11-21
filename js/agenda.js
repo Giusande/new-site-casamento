@@ -1,185 +1,104 @@
-const STORAGE_KEY = "casaraqui_booked_dates_v1";
-const STORAGE_CONF = "casaraqui_conf_v1";
+(function(){
+      const storage = {
+        get(k, fallback){ return JSON.parse(localStorage.getItem(k) || JSON.stringify(fallback)); },
+        set(k,v){ localStorage.setItem(k, JSON.stringify(v)); }
+      };
 
-let bookedDates = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
-let conf = JSON.parse(localStorage.getItem(STORAGE_CONF) || "{}");
-if (!conf.defaultValue) conf.defaultValue = 6500;
+      // load plans into select
+      function loadPlans(){
+        const planos = storage.get('planos', []);
+        const sel = document.getElementById('resPlan');
+        sel.innerHTML = '<option value="">Selecione um plano</option>';
+        planos.forEach(p => {
+          const opt = document.createElement('option');
+          opt.value = p.name;
+          opt.textContent = `${p.name} — R$ ${Number(p.price).toFixed(2)}`;
+          sel.appendChild(opt);
+        });
+      }
+      loadPlans();
 
-let today = new Date();
-let baseDate = new Date(today.getFullYear(), today.getMonth(), 1);
+      // calendar
+      let unavailable = storage.get('indisponiveis', []);
+      const calendar = createCalendar({
+        containerId: 'calContainer',
+        unavailableDates: unavailable,
+        onDayClick(dateIso, cell){
+          // When client clicks day, set into form if available and not reserved
+          const reservas = storage.get('reservas', []);
+          if(reservas.some(r => r.date === dateIso)){
+            alert('Dia já reservado.');
+            return;
+          }
+          // set selected visual
+          document.querySelectorAll('.cal-day').forEach(c => c.classList.remove('cal-selected'));
+          cell.classList.add('cal-selected');
+          document.getElementById('resDate').value = dateIso;
+        }
+      });
 
-// ELEMENTOS
-const calendarsEl = document.getElementById("calendars");
-const modalBg = document.getElementById("modal");
-const selectedDateEl = document.getElementById("selected-date");
-const reserveName = document.getElementById("reserve-name");
-const reserveEmail = document.getElementById("reserve-email");
-const reservePhone = document.getElementById("reserve-phone");
-const reserveNote = document.getElementById("reserve-note");
-const reserveValue = document.getElementById("reserve-value");
-const payResult = document.getElementById("payment-result");
+      // handle form submit
+      document.getElementById('resForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const date = document.getElementById('resDate').value;
+        const name = document.getElementById('resName').value.trim();
+        const email = document.getElementById('resEmail').value.trim();
+        const plan = document.getElementById('resPlan').value;
+        const payment = document.getElementById('resPayment').value;
 
-const closeModalBtn = document.getElementById("close-modal");
-const confirmPay = document.getElementById("confirm-pay");
-const cancelPay = document.getElementById("cancel-pay");
+        if(!date || !name || !email || !plan || !payment){ alert('Preencha todos os campos'); return; }
 
-// FORMATOS
-function formatCurrency(n) {
-  return n.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
-}
+        // block duplicates
+        const reservas = storage.get('reservas', []);
+        if(reservas.some(r => r.date === date)){
+          alert('Esta data já foi reservada por outro cliente.');
+          return;
+        }
 
-function dateToYMD(d) {
-  return (
-    d.getFullYear() +
-    "-" +
-    String(d.getMonth() + 1).padStart(2, "0") +
-    "-" +
-    String(d.getDate()).padStart(2, "0")
-  );
-}
+        // simulate payment
+        let status = '';
+        if(payment === 'Pix' || payment === 'Cartão'){ status = 'Pagamento aprovado'; }
+        else if(payment === 'Boleto'){ status = 'Aguardando pagamento (boleto)'; }
+        else status = 'Pendente';
 
-function isSameYMD(a, b) {
-  return (
-    a.getFullYear() === b.getFullYear() &&
-    a.getMonth() === b.getMonth() &&
-    a.getDate() === b.getDate()
-  );
-}
+        const reserva = { date, name, email, plan, payment, status, createdAt: new Date().toISOString() };
+        reservas.push(reserva);
+        storage.set('reservas', reservas);
 
-// RENDER
-function renderTwoMonths(base) {
-  calendarsEl.innerHTML = "";
-  for (let i = 0; i < 2; i++) {
-    calendarsEl.appendChild(
-      renderMonthCard(new Date(base.getFullYear(), base.getMonth() + i, 1))
-    );
-  }
-}
+        // marca indisponível imediatamente (para clientes futuros)
+        let indisponiveis = storage.get('indisponiveis', []);
+        if(!indisponiveis.includes(date)){
+          indisponiveis.push(date);
+          storage.set('indisponiveis', indisponiveis);
+        }
 
-function renderMonthCard(monthDate) {
-  const card = document.createElement("div");
-  card.className = "month-card";
+        alert('Reserva confirmada!\n' + status);
+        // refresh calendar + plans
+        loadPlans();
+        // re-render calendar
+        calendar.instance.render();
+        // reset form
+        document.getElementById('resForm').reset();
+        document.getElementById('resDate').value = '';
+        document.getElementById('payInfo').textContent = '';
+      });
 
-  const header = document.createElement("div");
-  header.className = "month-head";
+      // show info when payment changes
+      document.getElementById('resPayment').addEventListener('change', (e) => {
+        const v = e.target.value;
+        const info = document.getElementById('payInfo');
+        if(v === 'Pix') info.textContent = 'Pix: pagamento instantâneo. Seu evento será confirmado.';
+        else if(v === 'Boleto') info.textContent = 'Boleto: geramos o boleto; reserva aguardará confirmação.';
+        else if(v === 'Cartão') info.textContent = 'Cartão: pagamento simulado como aprovado.';
+        else info.textContent = '';
+      });
 
-  header.innerHTML = `
-    <h3>${monthDate.toLocaleDateString("pt-BR", {
-      month: "long",
-      year: "numeric",
-    })}</h3>
-    <div class="nav">
-      <button id="prev" class="ghost">‹</button>
-      <button id="next" class="ghost">›</button>
-    </div>
-  `;
+      // clear form
+      document.getElementById('btnClearForm').addEventListener('click', () => {
+        document.getElementById('resForm').reset();
+        document.getElementById('resDate').value = '';
+        document.getElementById('payInfo').textContent = '';
+        document.querySelectorAll('.cal-day').forEach(c => c.classList.remove('cal-selected'));
+      });
 
-  header.querySelector("#prev").onclick = () => {
-    baseDate.setMonth(baseDate.getMonth() - 1);
-    renderTwoMonths(baseDate);
-  };
-
-  header.querySelector("#next").onclick = () => {
-    baseDate.setMonth(baseDate.getMonth() + 1);
-    renderTwoMonths(baseDate);
-  };
-
-  card.append(header);
-
-  const daysGrid = document.createElement("div");
-  daysGrid.className = "days";
-
-  const year = monthDate.getFullYear();
-  const month = monthDate.getMonth();
-
-  const firstWeekDay = new Date(year, month, 1).getDay();
-  const lastDay = new Date(year, month + 1, 0).getDate();
-
-  for (let i = 0; i < firstWeekDay; i++) {
-    const cell = document.createElement("div");
-    cell.className = "day empty";
-    daysGrid.append(cell);
-  }
-
-  for (let d = 1; d <= lastDay; d++) {
-    const cell = document.createElement("div");
-    const dateObj = new Date(year, month, d);
-    const ymd = dateToYMD(dateObj);
-
-    if (bookedDates.includes(ymd)) {
-      cell.className = "day booked";
-      cell.textContent = d;
-    } else {
-      cell.className = "day";
-      cell.textContent = d;
-      cell.onclick = () => openReserveModal(dateObj);
-    }
-
-    if (isSameYMD(dateObj, new Date())) {
-      cell.classList.add("today");
-    }
-
-    daysGrid.append(cell);
-  }
-
-  card.append(daysGrid);
-  return card;
-}
-
-// RESERVAR
-let currentDateYMD = null;
-
-function openReserveModal(dateObj) {
-  currentDateYMD = dateToYMD(dateObj);
-  selectedDateEl.innerText = dateObj.toLocaleDateString("pt-BR");
-  reserveValue.innerText = formatCurrency(conf.defaultValue);
-  modalBg.style.display = "flex";
-}
-
-// FECHAR MODAL
-closeModalBtn.onclick = () => {
-  modalBg.style.display = "none";
-  payResult.innerHTML = "";
-};
-
-// CANCELAR
-cancelPay.onclick = () => {
-  modalBg.style.display = "none";
-};
-
-// CONFIRMAR PAGAMENTO
-confirmPay.onclick = () => {
-  if (!reserveName.value.trim() || !reserveEmail.value.trim()) {
-    payResult.innerHTML = `<p style="color:red">Preencha nome e email.</p>`;
-    return;
-  }
-
-  let reservations = JSON.parse(
-    localStorage.getItem("casaraqui_reservas_v1") || "[]"
-  );
-
-  reservations.push({
-    date: currentDateYMD,
-    name: reserveName.value.trim(),
-    email: reserveEmail.value.trim(),
-    phone: reservePhone.value.trim(),
-    note: reserveNote.value.trim(),
-    createdAt: new Date().toISOString(),
-    value: conf.defaultValue,
-  });
-
-  localStorage.setItem("casaraqui_reservas_v1", JSON.stringify(reservations));
-
-  bookedDates.push(currentDateYMD);
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(bookedDates));
-
-  payResult.innerHTML = `<p style="color:green">Reserva confirmada!</p>`;
-
-  setTimeout(() => {
-    modalBg.style.display = "none";
-    renderTwoMonths(baseDate);
-  }, 800);
-};
-
-// INIT
-renderTwoMonths(baseDate);
+    })();

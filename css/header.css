@@ -132,9 +132,10 @@ header .login .logar {
 
   header .navbar {
     position: fixed;
-    left: 5%;
+    left: 50%;
     top: -100%;
     width: 90%;
+    transform: translate(-50%, -50%);
     max-width: 500px;
     height: auto;
     background: #160d48;
@@ -158,9 +159,8 @@ header .login .logar {
   }
 
   header .navbar.active {
-    left: 5%;
+    left: 50%;
     top: 50%;
-    transform: translatey(-50%);
   }
 
   header .navbar .nav-list {

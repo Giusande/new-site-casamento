@@ -5,82 +5,155 @@
     <title>Painel Admin</title>
     <link rel="stylesheet" href="../css/config.css" />
     <link rel="stylesheet" href="../css/admin.css" />
+    <link
+      rel="shortcut icon"
+      href="../assets/logo/sagrada_familia.jpg"
+      type="image/x-icon"
+    />
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   </head>
   <body>
-    <!-- NAVBAR + SIDEBAR --> 
-    <header class="admin-header">
-      <div class="admin-nav-container">
-        <button id="admin-menu-btn" class="admin-hamburger">
-          <i data-lucide="menu"></i>
-        </button>
-
-        <div class="admin-left">
-          <img
-            src="../assets/logo/sagrada_familia-removebg-preview.png"
-            class="admin-logo"
-          />
-          <h2>Painel Admin</h2>
+    <div class="dashboard">
+      <aside class="sidebar" id="sidebar">
+        <div class="brand">
+          <div class="logo">CF</div>
+          <div class="brand-name">Casa de Festas</div>
         </div>
 
-        <nav class="admin-navbar">
-          <ul>
-            <li><a href="../agenda/">Agenda</a></li>
-            <li><a href="./">Reservas</a></li>
-            <li><a href="#">Configurações</a></li>
-            <li>
-              <button class="logout-btn" onclick="logoutAdmin()">Sair</button>
-            </li>
-          </ul>
+        <nav class="menu">
+          <a class="menu-item active" data-section="overview">Visão Geral</a>
+          <a class="menu-item" data-section="calendar">Calendário</a>
+          <a class="menu-item" data-section="reservations">Reservas</a>
+          <a class="menu-item" data-section="plans">Planos</a>
+          <a class="menu-item" data-section="settings">Configurações</a>
         </nav>
-      </div>
-    </header>
 
-    <!-- SIDEBAR MOBILE -->
-    <aside id="admin-sidebar" class="admin-sidebar">
-      <div class="sidebar-header">
-        <h3>Menu</h3>
-        <button id="close-sidebar"><i data-lucide="x"></i></button>
-      </div>
+        <div class="sidebar-footer">
+          <button id="toggleSidebar" class="ghost-btn">☰</button>
+        </div>
+      </aside>
 
-      <ul class="sidebar-links">
-        <li>
-          <a href="../agenda/"><i data-lucide="calendar"></i> Agenda</a>
-        </li>
-        <li>
-          <a href="./"><i data-lucide="clipboard-list"></i> Reservas</a>
-        </li>
-        <li>
-          <a href="#"><i data-lucide="settings"></i> Configurações</a>
-        </li>
-        <li>
-          <a href="#" onclick="logoutAdmin()"
-            ><i data-lucide="log-out"></i> Sair</a
-          >
-        </li>
-      </ul>
-    </aside>
-    <div id="sidebar-overlay"></div>
+      <main class="main">
+        <header class="topbar">
+          <div class="topbar-left">
+            <h1>Painel</h1>
+          </div>
+          <div class="topbar-right">
+            <div class="profile">Administrador</div>
+          </div>
+        </header>
 
-    <!-- CONTEÚDO -->
-    <main>
-      <h3>Datas ocupadas</h3>
+        <section class="content">
+          <!-- Overview -->
+          <div class="section" id="overview">
+            <div class="cards-row">
+              <div class="card card-anim">
+                <h3>Total reservas</h3>
+                <div id="stat-total">0</div>
+              </div>
 
-      <div id="admin-list"></div>
+              <div class="card card-anim">
+                <h3>Datas indisponíveis</h3>
+                <div id="stat-unavail">0</div>
+              </div>
 
-      <h3>Adicionar data manual</h3>
-      <input type="date" id="manual-date" />
-      <button id="add-manual">Adicionar</button>
+              <div class="card card-anim">
+                <h3>Planos ativos</h3>
+                <div id="stat-plans">0</div>
+              </div>
+            </div>
 
-      <h3>Valor padrão da reserva</h3>
-      <input type="number" id="admin-value" />
-      <button id="save-admin">Salvar</button>
+            <div class="welcome card card-anim">
+              <h2>Bem-vindo ao painel</h2>
+              <p>
+                Gerencie calendário, planos e reservas com animações e um layout
+                profissional.
+              </p>
+            </div>
+          </div>
 
-      <hr />
+          <!-- Calendar -->
+          <div class="section hidden" id="calendar">
+            <div class="panel">
+              <h2>Calendário — marcar dias como indisponíveis</h2>
+              <div id="calContainer" class="cal-box"></div>
+              <div class="actions">
+                <button id="btnSaveUnavailable" class="btn primary">
+                  Salvar indisponibilidades
+                </button>
+                <button id="btnClearUnavailable" class="btn ghost">
+                  Limpar indisponíveis
+                </button>
+              </div>
+              <p class="muted">
+                Clique em um dia para marcar/desmarcar a indisponibilidade.
+                Datas indisponíveis ficarão bloqueadas no site do cliente.
+              </p>
+            </div>
+          </div>
 
-      <button id="clear-booked">Limpar todas as reservas</button>
-    </main>
+          <!-- Reservations -->
+          <div class="section hidden" id="reservations">
+            <div class="panel">
+              <h2>Reservas</h2>
+              <div id="reservationsList" class="reservations-list"></div>
+            </div>
+          </div>
 
-    <script src="./admin.js"></script>
+          <!-- Plans -->
+          <div class="section hidden" id="plans">
+            <div class="panel">
+              <h2>Planos</h2>
+
+              <form id="planForm" class="plan-form">
+                <input
+                  type="text"
+                  id="planName"
+                  placeholder="Nome do plano"
+                  required
+                />
+                <input
+                  type="number"
+                  id="planPrice"
+                  placeholder="Valor (R$)"
+                  required
+                />
+                <textarea
+                  id="planDesc"
+                  placeholder="Descrição / benefícios"
+                  rows="3"
+                ></textarea>
+                <div class="form-actions">
+                  <button type="submit" class="btn primary">
+                    Adicionar Plano
+                  </button>
+                  <button type="button" id="btnClearPlans" class="btn ghost">
+                    Limpar Planos
+                  </button>
+                </div>
+              </form>
+
+              <div id="plansList" class="plans-list"></div>
+            </div>
+          </div>
+
+          <!-- Settings -->
+          <div class="section hidden" id="settings">
+            <div class="panel">
+              <h2>Configurações</h2>
+              <p class="muted">
+                Configurações básicas do painel (apenas protótipo).
+              </p>
+              <button id="btnExport" class="btn">Exportar dados (JSON)</button>
+              <button id="btnImport" class="btn ghost">Importar dados</button>
+            </div>
+          </div>
+        </section>
+
+        <footer class="footer">© Casa de Festas</footer>
+      </main>
+    </div>
+    <script src="../js/calendar.js"></script>
+    <script src="../js/admin.js"></script>
   </body>
 </html>
