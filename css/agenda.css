@@ -394,7 +394,7 @@ main{
   box-shadow: 0 24px 60px rgba(43, 58, 145, 0.35);
 }
 .plan-card.popular .badge {
-  background: linear-gradient(90deg, #ffd36b, #ff7ab6);
+  background: linear-gradient(90deg, #ffd36b, #a67c2e);
   color: #082233;
 }
 .plan-card.popular .price {

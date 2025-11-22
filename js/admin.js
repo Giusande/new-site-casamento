@@ -105,40 +105,70 @@ bottomBtns.forEach((btn) => {
   function renderReservations() {
     const list = $("#reservationsList");
     const reservas = storage.get("reservas", []);
+
     list.innerHTML = "";
+
+    // Nenhuma reserva
     if (reservas.length === 0) {
-      list.innerHTML =
-        '<div class="reservation">Nenhuma reserva encontrada.</div>';
+      list.innerHTML = `
+      <div class="reservation-card empty-card fade-in">
+        <i class="ri-calendar-close-line"></i>
+        <p>Nenhuma reserva encontrada.</p>
+      </div>`;
       return;
     }
+
     reservas.forEach((r) => {
       const el = document.createElement("div");
-      el.className = "reservation card-anim";
-      el.innerHTML = `<div>
-          <strong>${r.date}</strong> — ${r.name} <div class="muted">${
-        r.email
-      }</div>
-          <div class="muted">Plano: ${r.plan} · Pagamento: ${
-        r.payment
-      } · Status: ${r.status || "-"}</div>
+      el.className = "reservation-card slide-fade-in";
+
+      el.innerHTML = `
+      <div class="reservation-info">
+        <div class="reservation-date">
+          <i class="ri-calendar-event-line"></i>
+          <strong>Data do Evento: ${r.date}</strong>
         </div>
-        <div>
-          <button class="btn" data-action="delete">Excluir</button>
-        </div>`;
-      el.querySelector('[data-action="delete"]').addEventListener(
+
+        <div class="reservation-user">
+          Nome do contratante: ${r.name}
+          <div class="muted">Email do contratante: ${r.email}</div>
+        </div>
+
+        <div class="reservation-details">
+          <p>Plano:<strong> ${r.plan}</strong></p>
+          <p>Pagamento: <strong> ${r.payment}</strong></p>
+          <p>Status: <span class="status-pill"> ${
+            r.status || "Pendente"
+          }</span></p>
+        </div>
+      </div>
+
+      <div class="reservation-actions">
+        <button class="btn-delete" data-action="delete">
+          <i class="ri-delete-bin-6-line"></i>
+          Excluir
+        </button>
+      </div>
+    `;
+
+      // Evento de exclusão
+      el.querySelector("[data-action='delete']").addEventListener(
         "click",
         () => {
           if (!confirm("Excluir reserva?")) return;
+
           const all = storage.get("reservas", []);
           const filtered = all.filter(
             (x) =>
               !(x.date === r.date && x.name === r.name && x.email === r.email)
           );
+
           storage.set("reservas", filtered);
           renderReservations();
           refreshStats();
         }
       );
+
       list.appendChild(el);
     });
   }
@@ -156,7 +186,7 @@ bottomBtns.forEach((btn) => {
       const item = document.createElement("div");
       item.className = "plan-item card-anim";
       item.innerHTML = `<div class="plan-meta">
-          <strong>${p.name}</strong>
+          <h2>${p.name}</h2>
           <div class="muted">R$ ${Number(p.price).toFixed(2)}</div>
           <div class="muted small">${p.desc || ""}</div>
         </div>
@@ -249,11 +279,6 @@ bottomBtns.forEach((btn) => {
       reader.readAsText(file);
     });
     input.click();
-  });
-
-  // toggle sidebar
-  $("#toggleSidebar").addEventListener("click", () => {
-    document.querySelector(".sidebar").classList.toggle("collapsed");
   });
 
   // initial render

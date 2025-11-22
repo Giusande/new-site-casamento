@@ -10,10 +10,15 @@
       href="../assets/logo/sagrada_familia.jpg"
       type="image/x-icon"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   </head>
   <body>
-    <!-- Bottom Navigation Mobile -->
     <nav class="bottom-nav">
       <button class="nav-btn active" data-section="overview">
         <i data-lucide="home"></i>
@@ -42,10 +47,11 @@
     </nav>
     <div class="dashboard">
       <aside class="sidebar" id="sidebar">
-        <div class="brand">
-          <div class="logo">CF</div>
-          <div class="brand-name">Casa de Festas</div>
-        </div>
+        <img
+          src="../assets/logo/sagrada_familia-removebg-preview.png"
+          alt="logo"
+          class="logo"
+        />
 
         <nav class="menu">
           <a class="menu-item active" data-section="overview">Visão Geral</a>
@@ -54,16 +60,12 @@
           <a class="menu-item" data-section="plans">Planos</a>
           <a class="menu-item" data-section="settings">Configurações</a>
         </nav>
-
-        <div class="sidebar-footer">
-          <button id="toggleSidebar" class="ghost-btn">☰</button>
-        </div>
       </aside>
 
       <main class="main">
         <header class="topbar">
           <div class="topbar-left">
-            <h1>Painel</h1>
+            <h1>Painel de Administração</h1>
           </div>
           <div class="topbar-right">
             <div class="profile">Administrador</div>
@@ -73,6 +75,7 @@
         <section class="content">
           <!-- Overview -->
           <div class="section" id="overview">
+            
             <div class="cards-row">
               <div class="card card-anim">
                 <h3>Total reservas</h3>
@@ -89,20 +92,20 @@
                 <div id="stat-plans">0</div>
               </div>
             </div>
-
             <div class="welcome card card-anim">
-              <h2>Bem-vindo ao painel</h2>
+              <h1>Seja bem-vindo ao painel de administração</h2>
               <p>
-                Gerencie calendário, planos e reservas com animações e um layout
-                profissional.
+                Aqui você encontra uma visão completa das suas informações, com
+                dados atualizados e ferramentas criadas para facilitar sua
+                gestão. Explore os recursos, acompanhe seu desempenho e mantenha
+                tudo sob controle em um único lugar.
               </p>
             </div>
           </div>
-
+          
           <!-- Calendar -->
           <div class="section hidden" id="calendar">
             <div class="panel">
-              <h2>Calendário — marcar dias como indisponíveis</h2>
               <div id="calContainer" class="cal-box"></div>
               <div class="actions">
                 <button id="btnSaveUnavailable" class="btn primary">
@@ -176,8 +179,6 @@
             </div>
           </div>
         </section>
-
-        <footer class="footer">© Casa de Festas</footer>
       </main>
     </div>
     <script src="../js/calendar.js"></script>
