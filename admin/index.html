@@ -13,6 +13,33 @@
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   </head>
   <body>
+    <!-- Bottom Navigation Mobile -->
+    <nav class="bottom-nav">
+      <button class="nav-btn active" data-section="overview">
+        <i data-lucide="home"></i>
+        <span>Início</span>
+      </button>
+
+      <button class="nav-btn" data-section="calendar">
+        <i data-lucide="calendar"></i>
+        <span>Calendário</span>
+      </button>
+
+      <button class="nav-btn" data-section="reservations">
+        <i data-lucide="clipboard-list"></i>
+        <span>Reservas</span>
+      </button>
+
+      <button class="nav-btn" data-section="plans">
+        <i data-lucide="layers"></i>
+        <span>Planos</span>
+      </button>
+
+      <button class="nav-btn" data-section="settings">
+        <i data-lucide="settings"></i>
+        <span>Configs</span>
+      </button>
+    </nav>
     <div class="dashboard">
       <aside class="sidebar" id="sidebar">
         <div class="brand">

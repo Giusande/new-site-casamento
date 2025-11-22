@@ -1,6 +1,30 @@
-/* admin.js
-   Lógica do painel admin: menu, calendar, plans, reservations, export/import
-*/
+lucide.createIcons();
+
+const bottomBtns = document.querySelectorAll(".bottom-nav .nav-btn");
+const sections = document.querySelectorAll(".section");
+const menuItems = document.querySelectorAll(".menu-item");
+
+bottomBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const target = btn.dataset.section;
+
+    // troca highlight nos botões inferiores
+    bottomBtns.forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    // troca highlight no menu lateral também
+    menuItems.forEach((m) =>
+      m.classList.toggle("active", m.dataset.section === target)
+    );
+
+    // alterna seções
+    sections.forEach((sec) =>
+      sec.id === target
+        ? sec.classList.remove("hidden")
+        : sec.classList.add("hidden")
+    );
+  });
+});
 
 (function () {
   // helpers

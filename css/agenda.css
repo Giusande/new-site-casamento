@@ -15,6 +15,10 @@ header {
   box-shadow: 0 8px 30px rgba(2, 9, 22, 0.6);
 }
 
+main{
+  margin-bottom: 50px;
+}
+
 .client-wrap {
   width: 90%;
   max-width: 1100px;
