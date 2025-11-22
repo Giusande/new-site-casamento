@@ -120,7 +120,6 @@ body {
 .cards-row {
   display: flex;
   gap: 18px;
-  margin-bottom: 18px;
 }
 
 .card {
@@ -135,29 +134,30 @@ body {
 .card h3 {
   margin: 0;
   font-size: 13px;
-  color: #000;
+  color: #160d48;
 }
 
 .card div {
   font-size: 22px;
   margin-top: 8px;
-  color: #000;
+  color: #160d48;
 }
 
 .welcome {
   padding: 22px;
-  color: #000;
+  color: #160d48;
+  margin-bottom: 20px;
 }
 
-.welcome h1 {
-  margin-bottom: 20px;
+.welcome h2 {
+  margin-bottom: 10px;
   font-weight: 700;
   text-align: center;
 }
 
 .welcome p {
-  font-weight: 500;
-  font-size: 16px;
+  font-weight: 400;
+  font-size: 12px;
   line-height: 1.4;
   text-align: center;
   width: 95%;
@@ -211,7 +211,7 @@ body {
 
 #calContainer {
   width: 100%;
-  color: #a67c2e;
+  color: #160d48;
 }
 
 .cal-header {
@@ -224,7 +224,7 @@ body {
 .cal-btn {
   background: transparent;
   border: none;
-  color: #d7b566;
+  color: #160d48;
   font-size: 18px;
   padding: 8px;
   border-radius: 8px;
@@ -287,14 +287,14 @@ body {
 }
 
 .cal-today {
-  background: linear-gradient(90deg, #1f8fa2, #137f7e);
+  background: linear-gradient(90deg, #160d48, #2e275f);
   color: white;
   font-weight: 700;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
 }
 
 .cal-unavailable {
-  background: linear-gradient(90deg, #4b1f1f, #7a2a2a);
+  background: linear-gradient(90deg, #d7b566, #a67c2e);
   color: #fff;
   text-decoration: line-through;
   opacity: 0.95;
