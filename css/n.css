@@ -1,0 +1,144 @@
+:root {
+  --bg: #f4f4f4;
+  --card: #fff;
+  --azul: #0d366f;
+  --muted: #6b6b6b;
+  --accent: #e9d8b0;
+  --sagrada: #160d48;
+}
+
+body {
+  background: var(--bg);
+}
+
+.wrap {
+  max-width: 1100px;
+  margin: 50px auto;
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.card {
+  background: var(--card);
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(14, 12, 12, 0.06);
+  margin: 30px;
+}
+
+.card h2,
+.card h3 {
+  color: var(--sagrada);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 12px;
+  margin-left: 5px;
+}
+
+input[type="text"],
+input[type="datetime-local"],
+textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #aeadab;
+  margin-top: 6px;
+  font-size: 14px;
+}
+
+textarea {
+  min-height: 84px;
+  resize: vertical;
+}
+
+hr {
+  margin: 40px 0;
+  height: 2px;
+  background: #000;
+  border: 0;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 12px;
+}
+.btn-primary {
+  background: var(--azul);
+  color: #fff;
+  box-shadow: 0 6px 14px rgba(183, 139, 43, 0.18);
+}
+.btn-ghost {
+  background: transparent;
+  border: 1px solid #e6e0d6;
+  color: #333;
+}
+
+.small {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.list {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 240px;
+  overflow: auto;
+  padding-right: 6px;
+}
+
+.item {
+  padding: 10px;
+  border-radius: 8px;
+  background: #fbf9f7;
+  border: 1px solid #f0e9df;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.item .name {
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.controls {
+  display: flex;
+  gap: 8px;
+}
+
+.generate {
+  background: linear-gradient(90deg, var(--azul), #d9b35a);
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 700;
+}
+
+@media (max-width: 880px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+}

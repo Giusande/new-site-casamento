@@ -54,6 +54,24 @@ header .login {
   gap: 10px;
 }
 
+header .login .user-info{
+  max-width: 200px;
+  display: flex;
+  align-items: center;
+}
+
+header .login .user-info .username{
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+header .login .user-info .logout-btn{
+  color: #f4f4f4;
+  border: 1px solid #f4f4f4;
+  background: transparent;
+  max-height: 30px;
+}
+
 header .login button {
   padding: 5px 15px;
   border-radius: 15px;

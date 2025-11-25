@@ -25,12 +25,27 @@
         <h2>Criar Conta</h2>
         <p>Cadastre-se e comece a planejar seu grande dia.</p>
 
-        <input type="text" class="input" placeholder="Seu nome completo" />
-        <input type="email" class="input" placeholder="Email" />
-        <input type="password" class="input" placeholder="Senha" />
-        <input type="password" class="input" placeholder="Confirmar senha" />
+        <input
+          id="reg_name"
+          type="text"
+          class="input"
+          placeholder="Seu nome completo"
+        />
+        <input id="reg_email" type="email" class="input" placeholder="Email" />
+        <input
+          id="reg_pass"
+          type="password"
+          class="input"
+          placeholder="Senha"
+        />
+        <input
+          id="reg_pass2"
+          type="password"
+          class="input"
+          placeholder="Confirmar senha"
+        />
 
-        <button class="btn">Cadastrar</button>
+        <button id="btnRegister" class="btn">Cadastrar</button>
 
         <!-- LOGIN GOOGLE -->
         <button class="google-btn">
@@ -39,10 +54,13 @@
         </button>
 
         <p class="link">Já possui conta? <a href="../login/">Entrar</a></p>
-        <button class="return" onclick="window.location.href = '../../'">Voltar para página inicial</button>
+        <button class="return" onclick="window.location.href = '../../'">
+          Voltar para página inicial
+        </button>
       </div>
 
       <div class="right"></div>
     </div>
+    <script src="../../js/auth.js"></script>
   </body>
 </html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Convite de Casamento</title>
+    <link rel="stylesheet" href="../css/config.css">
+    <link rel="stylesheet" href="../css/c.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Nunito:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="title" id="casal"></h1>
+      <div class="subtitle" id="localData"></div>
+
+      <!-- Contagem regressiva -->
+      <div class="section">
+        <h3>⏳ Falta quanto tempo?</h3>
+        <div class="countdown" id="countdown">Carregando...</div>
+      </div>
+
+      <!-- Mensagem principal -->
+      <div class="section">
+        <h3>💌 Mensagem dos noivos</h3>
+        <p id="mensagem"></p>
+      </div>
+
+      <!-- Presença -->
+      <div class="section">
+        <h3>📍 Confirmação de presença</h3>
+
+        <button onclick="confirmarPresenca(true)">Confirmar presença</button>
+        <button
+          style="background: #bbb; color: #000"
+          onclick="confirmarPresenca(false)"
+        >
+          Não poderei ir
+        </button>
+
+        <p id="confirmacaoTexto" style="margin-top: 10px; color: #444"></p>
+      </div>
+
+      <!-- Presentes -->
+      <div class="section">
+        <h3>🎁 Escolha um presente</h3>
+
+        <select id="selectPresentes"></select>
+        <button onclick="reservarPresente()">Reservar Presente</button>
+
+        <p id="presenteMsg" style="margin-top: 10px; color: #444"></p>
+      </div>
+
+      <!-- QR CODE -->
+      <div class="section qr-code">
+        <h3>📱 Seu QR Code</h3>
+        <canvas id="qr"></canvas>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
+    <script src="../js/c.js"></script>
+  </body>
+</html>

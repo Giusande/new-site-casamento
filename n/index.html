@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Painel dos Noivos — Luxuoso</title>
+    <link rel="stylesheet" href="../css/config.css" />
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css/n.css" />
+    <link
+      rel="shortcut icon"
+      href="../assets/logo/sagrada_familia.jpg"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="logo-mobile">
+        <button class="menu-btn" id="menu-btn">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <img
+          class="logo"
+          src="../assets/logo/sagrada_familia-removebg-preview.png"
+          alt="Sagrada Familia"
+        />
+      </div>
+      <nav class="navbar" id="navbar">
+        <img
+          class="logo"
+          src="./assets/logo/sagrada_familia-removebg-preview.png"
+          alt="Sagrada Familia"
+        />
+        <ul class="nav-list">
+          <p>Navegue entre as abas:</p>
+          <li><a href="./">Inicio</a></li>
+          <li><a href="./agenda/">Agenda</a></li>
+          <li><a href="#">Sagrada Famlia</a></li>
+          <li><a href="#">Preços e Serviços</a></li>
+        </ul>
+      </nav>
+      <div class="login" id="loginArea">
+        <!-- Aqui o JS vai trocar automaticamente -->
+      </div>
+    </header>
+    <div class="wrap">
+      <div class="grid">
+        <div class="card">
+          <h2>Informações do Evento</h2>
+
+          <label>Nome do casal</label>
+          <input id="casal" type="text" placeholder="Ex.: Ana & Pedro" />
+
+          <label>Data e hora do casamento</label>
+          <input id="data" type="datetime-local" />
+
+          <label>Local</label>
+          <input
+            id="local"
+            type="text"
+            placeholder="Salão, igreja, espaço..."
+          />
+
+          <label>Mensagem principal</label>
+          <textarea
+            id="mensagem"
+            placeholder="Mensagem aos convidados..."
+          ></textarea>
+
+          <button class="btn btn-primary" onclick="salvarInfo()">
+            Salvar informações
+          </button>
+
+          <p class="small" id="salvoInfo"></p>
+
+          <hr />
+
+          <h3>Adicionar Convidado</h3>
+
+          <label>Nome do convidado</label>
+          <input id="nomeConvidado" type="text" />
+
+          <button class="btn btn-primary" onclick="addConvidado()">
+            Adicionar + QR Code
+          </button>
+
+          <div id="listaConvidados" class="list"></div>
+
+          <hr />
+
+          <h3>Lista de Presentes</h3>
+
+          <label>Nome do presente</label>
+          <input id="presenteNome" type="text" />
+
+          <button class="btn btn-primary" onclick="addPresente()">
+            Adicionar Presente
+          </button>
+
+          <div id="listaPresentes" class="list"></div>
+        </div>
+        <div class="card">
+          <h2>Página Oficial do Evento</h2>
+          <p class="small">
+            Gere automaticamente uma landing page luxuosa para os convidados.
+          </p>
+
+          <button class="generate" onclick="abrirLanding()">
+            Abrir Landing Page Oficial
+          </button>
+        </div>
+      </div>
+    </div>
+    <script src="../js/mobile.js"></script>
+    <script src="../js/log.js"></script>
+    <script src="../js/n.js"></script>
+  </body>
+</html>

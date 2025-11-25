@@ -27,10 +27,20 @@
         <h2>Bem-vindo ao site da Sagrada Familia!</h2>
         <p>Faça login para criar ou acessar seu site de casamento.</p>
 
-        <input type="email" class="input" placeholder="Email" />
-        <input type="password" class="input" placeholder="Senha" />
+        <input
+          id="login_email"
+          type="email"
+          class="input"
+          placeholder="Email"
+        />
+        <input
+          id="login_pass"
+          type="password"
+          class="input"
+          placeholder="Senha"
+        />
 
-        <button class="btn">Entrar</button>
+        <button id="btnLogin" class="btn">Entrar</button>
 
         <!-- LOGIN GOOGLE -->
         <button class="google-btn">
@@ -41,10 +51,13 @@
         <p class="link">
           Ainda não tem conta? <a href="../cadastro/">Cadastre-se</a>
         </p>
-        <button class="return" onclick="window.location.href = '../../'">Voltar para página inicial</button>
+        <button class="return" onclick="window.location.href = '../../'">
+          Voltar para página inicial
+        </button>
       </div>
 
       <div class="right"></div>
     </div>
+    <script src="../../js/auth.js"></script>
   </body>
 </html>

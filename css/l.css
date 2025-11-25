@@ -1,0 +1,76 @@
+:root {
+  --gold: #b78b2b;
+  --muted: #6b6b6b;
+  --bg: #fbfaf8;
+}
+
+/* ---------- HERO ---------- */
+.hero {
+  text-align: center;
+  padding: 50px 24px;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.hero h1 {
+  margin: 0;
+  font-family: "Playfair Display", serif;
+  font-size: 40px;
+}
+
+.hero .sub {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 18px;
+}
+
+.hero #contador {
+  margin-top: 20px;
+  font-size: 22px;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+/* ---------- BLOCO ---------- */
+.bloco {
+  max-width: 920px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 26px;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.bloco h2 {
+  margin-top: 0;
+  font-family: "Playfair Display", serif;
+  font-size: 26px;
+  color: #222;
+}
+
+.item {
+  padding: 12px 10px;
+  background: #fbf9f7;
+  border: 1px solid #f0e9df;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.item strong {
+  font-size: 16px;
+}
+
+@media (max-width: 640px) {
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .hero #contador {
+    font-size: 18px;
+  }
+
+  .bloco {
+    margin: 20px;
+    padding: 20px;
+  }
+}
